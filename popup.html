@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="/toastr.css" rel="stylesheet" /> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">   
+    <link rel="stylesheet" href="/site.css">	   
+    <script src="/Scripts/jquery-3.6.0.min.js"></script>
+    <script src="/Scripts/toastr.min.js"></script>
+  </head>
+
+  <body>
+    <script src="/popup.js"></script>
+    <div class="loadingDiv">
+       <img src="Images/netrin.gif" class="loading-img">
+    </div>
+    <div id="tab" class="tab"></div>
+    <div id="infoTab"></div>
+    <div id="hexplora" class="fixTableHead"></div>
+    <div id="id2"></div>
+    <div id="date_Div"></div>
+    <div id="Refer_div"></div>
+    <table id="GraphData">
+      <tr>
+        <td style="width: 250px;padding:5px;background: #f1f1f1; padding-bottom: 0px;" id="UserInfo">
+          <table>
+            <tbody>
+              <tr>
+                <tr rowspan="3">
+                  <td style="background: #f1f1f1; padding: 15px;"></td>
+                </tr>
+                <td style="vertical-align: top;">
+                  <div class="mb-5">Patient Name : <span id="details-name"></span> </div>
+                  <div class="mb-5">DOB : <span id="details-dob"></span></div>
+                  <div class="mb-5">Age : <span id="details-age"></span></div>
+                  <div class="mb-5">Display Period : <br> <span id="details-period"></div>
+                  <div class="mb-15">
+                    <label style="display: flex; align-items: center; vertical-align: middle;">
+                      <h3 class="m-r-sm" style="margin-right:7px;">Graphs</h3>
+                      <select class="form-control required form-group" id="Rpm_Graphs" name="Rpm_Graphs" style="width:125px;height:30px;padding: 4px 10px;">
+                        <option value="BPPulseChart">BP and Pulse</option>
+                        <option value="WeightChart">Weight</option>
+                        <option value="GlucoseChart">Glucose</option>
+                      </select>
+                    </label>
+                  </div>
+                </td>
+              </tr>                        
+          </tbody>
+        </table>
+        </td>
+        <td style="padding: 0px;border-right: 3px solid #f1f1f1;border-bottom: 5px solid #f1f1f1;width: 100%;">
+          <table style="width: 100%;">
+            <tbody>
+              <tr>
+                <td style="padding: 0px;">
+                  <div class="nav-btn BPPulseChart">
+                    <button class="grph-btn" value="BPChart">BP Graph</button>
+                    <button class="grph-btn" value="PulseChart">Pulse Graph</button>
+                    <button class="grph-btn" value="BPTimeChart">BP Timewise Distribution</button>
+                  </div>
+                  <div class="nav-btn WeightChart" style="display:none">
+                    <button class="grph-btn" value="WeightChart">Weight Graph</button>
+                    <button class="grph-btn" value="WtTimeChart">Weight Timewise Distribution</button>
+                  </div>
+                  <div class="nav-btn GlucoseChart" style="display:none">
+                    <button class="grph-btn" value="GlucoseChart">Glucose Graph</button>
+                    <button class="grph-btn" value="GluTimeChart">Glucose Timewise Distribution</button>
+                  </div>
+                  <div>
+                    <label class="graph-div" id="graphHeading">BP Timewise Distribution</label>
+                    <div style="max-height: 300px;">
+                      <canvas id="TestChart"  style="max-height:200px;width:550px;"></canvas>
+                    </div>      
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <div class="fixTableHead" id="rpmUI_DIV">
+    </div>
+    <div id="CarePlanDownloadDiv" style="background: rgb(28 156 216);margin-top: 5px;border-radius: 3px;display:none;">
+      <div id="CarePlanDownloadBtn" style="height: 20px;line-height: 30px;color: white;font-weight: 800;font-size: 13px;padding-left: 10px;" >
+        <div class="btn-div">
+          <i class="fa fa-download" aria-hidden="true" style="color: white;"></i>
+            Download
+        </div>
+      </div>
+      <div id="CarePlan_DIV" style="background:white;">
+      </div>  
+    </div>
+    <div id="Refered" style="display: none;">
+      <div class="btn-Refer" >
+        <label class="p-3 text-danger"><b><h3>Write Your Comments</h3></b></label>
+        <textarea class="t_area" placeholder="Text Area"></textarea><br/><br/>
+        <button class="btn-primary" id="testBtnClick">Submit</button>
+      </div>
+      <div class="success">
+      </div>
+    </div>
+  </body>
+</html>
+
+<script src="/Scripts/Charts/chart.js"></script>
